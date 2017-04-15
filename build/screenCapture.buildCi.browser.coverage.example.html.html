@@ -1,6 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <title>Code coverage report for node-npmtest-morgan/morgan/index.js</title>
     <meta charset="utf-8">
     <style>
@@ -210,11 +208,11 @@
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-morgan/morgan/</a> &#187; index.js</div>
+    <div class="path"><a href="../../index.html">All files</a> » <a href="index.html">node-npmtest-morgan/morgan/</a> » index.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
-<tr><td class="line-count">1
+<tbody><tr><td class="line-count">1
 2
 3
 4
@@ -1290,92 +1288,92 @@ var DEFAULT_BUFFER_DURATION = 1000
  * @return {Function} middleware
  */
 &nbsp;
-<span class="fstat-no" title="function not covered" >function morgan (format, options) {</span>
-<span class="cstat-no" title="statement not covered" >  var fmt = format</span>
-<span class="cstat-no" title="statement not covered" >  var opts = options || {}</span>
+<span class="fstat-no" title="function not covered">function morgan (format, options) {</span>
+<span class="cstat-no" title="statement not covered">  var fmt = format</span>
+<span class="cstat-no" title="statement not covered">  var opts = options || {}</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (format &amp;&amp; typeof format === 'object') {</span>
-<span class="cstat-no" title="statement not covered" >    opts = format</span>
-<span class="cstat-no" title="statement not covered" >    fmt = opts.format || 'default'</span>
+<span class="cstat-no" title="statement not covered">  if (format &amp;&amp; typeof format === 'object') {</span>
+<span class="cstat-no" title="statement not covered">    opts = format</span>
+<span class="cstat-no" title="statement not covered">    fmt = opts.format || 'default'</span>
 &nbsp;
     // smart deprecation message
-<span class="cstat-no" title="statement not covered" >    deprecate('morgan(options): use morgan(' + (typeof fmt === 'string' ? JSON.stringify(fmt) : 'format') + ', options) instead')</span>
+<span class="cstat-no" title="statement not covered">    deprecate('morgan(options): use morgan(' + (typeof fmt === 'string' ? JSON.stringify(fmt) : 'format') + ', options) instead')</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (fmt === undefined) {</span>
-<span class="cstat-no" title="statement not covered" >    deprecate('undefined format: specify a format')</span>
+<span class="cstat-no" title="statement not covered">  if (fmt === undefined) {</span>
+<span class="cstat-no" title="statement not covered">    deprecate('undefined format: specify a format')</span>
   }
 &nbsp;
   // output on request instead of response
-<span class="cstat-no" title="statement not covered" >  var immediate = opts.immediate</span>
+<span class="cstat-no" title="statement not covered">  var immediate = opts.immediate</span>
 &nbsp;
   // check if log entry should be skipped
-<span class="cstat-no" title="statement not covered" >  var skip = opts.skip || false</span>
+<span class="cstat-no" title="statement not covered">  var skip = opts.skip || false</span>
 &nbsp;
   // format function
-<span class="cstat-no" title="statement not covered" >  var formatLine = typeof fmt !== 'function'</span>
+<span class="cstat-no" title="statement not covered">  var formatLine = typeof fmt !== 'function'</span>
     ? getFormatFunction(fmt)
     : fmt
 &nbsp;
   // stream
-<span class="cstat-no" title="statement not covered" >  var buffer = opts.buffer</span>
-<span class="cstat-no" title="statement not covered" >  var stream = opts.stream || process.stdout</span>
+<span class="cstat-no" title="statement not covered">  var buffer = opts.buffer</span>
+<span class="cstat-no" title="statement not covered">  var stream = opts.stream || process.stdout</span>
 &nbsp;
   // buffering support
-<span class="cstat-no" title="statement not covered" >  if (buffer) {</span>
-<span class="cstat-no" title="statement not covered" >    deprecate('buffer option')</span>
+<span class="cstat-no" title="statement not covered">  if (buffer) {</span>
+<span class="cstat-no" title="statement not covered">    deprecate('buffer option')</span>
 &nbsp;
     // flush interval
-<span class="cstat-no" title="statement not covered" >    var interval = typeof buffer !== 'number'</span>
+<span class="cstat-no" title="statement not covered">    var interval = typeof buffer !== 'number'</span>
       ? DEFAULT_BUFFER_DURATION
       : buffer
 &nbsp;
     // swap the stream
-<span class="cstat-no" title="statement not covered" >    stream = createBufferStream(stream, interval)</span>
+<span class="cstat-no" title="statement not covered">    stream = createBufferStream(stream, interval)</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >function logger (req, res, next) {</span></span>
+<span class="cstat-no" title="statement not covered">  return <span class="fstat-no" title="function not covered">function logger (req, res, next) {</span></span>
     // request data
-<span class="cstat-no" title="statement not covered" >    req._startAt = undefined</span>
-<span class="cstat-no" title="statement not covered" >    req._startTime = undefined</span>
-<span class="cstat-no" title="statement not covered" >    req._remoteAddress = getip(req)</span>
+<span class="cstat-no" title="statement not covered">    req._startAt = undefined</span>
+<span class="cstat-no" title="statement not covered">    req._startTime = undefined</span>
+<span class="cstat-no" title="statement not covered">    req._remoteAddress = getip(req)</span>
 &nbsp;
     // response data
-<span class="cstat-no" title="statement not covered" >    res._startAt = undefined</span>
-<span class="cstat-no" title="statement not covered" >    res._startTime = undefined</span>
+<span class="cstat-no" title="statement not covered">    res._startAt = undefined</span>
+<span class="cstat-no" title="statement not covered">    res._startTime = undefined</span>
 &nbsp;
     // record request start
-<span class="cstat-no" title="statement not covered" >    recordStartTime.call(req)</span>
+<span class="cstat-no" title="statement not covered">    recordStartTime.call(req)</span>
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function logRequest () {</span>
-<span class="cstat-no" title="statement not covered" >      if (skip !== false &amp;&amp; skip(req, res)) {</span>
-<span class="cstat-no" title="statement not covered" >        debug('skip request')</span>
-<span class="cstat-no" title="statement not covered" >        return</span>
+<span class="fstat-no" title="function not covered">    function logRequest () {</span>
+<span class="cstat-no" title="statement not covered">      if (skip !== false &amp;&amp; skip(req, res)) {</span>
+<span class="cstat-no" title="statement not covered">        debug('skip request')</span>
+<span class="cstat-no" title="statement not covered">        return</span>
       }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      var line = formatLine(morgan, req, res)</span>
+<span class="cstat-no" title="statement not covered">      var line = formatLine(morgan, req, res)</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      if (line == null) {</span>
-<span class="cstat-no" title="statement not covered" >        debug('skip line')</span>
-<span class="cstat-no" title="statement not covered" >        return</span>
+<span class="cstat-no" title="statement not covered">      if (line == null) {</span>
+<span class="cstat-no" title="statement not covered">        debug('skip line')</span>
+<span class="cstat-no" title="statement not covered">        return</span>
       }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      debug('log request')</span>
-<span class="cstat-no" title="statement not covered" >      stream.write(line + '\n')</span>
+<span class="cstat-no" title="statement not covered">      debug('log request')</span>
+<span class="cstat-no" title="statement not covered">      stream.write(line + '\n')</span>
     };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (immediate) {</span>
+<span class="cstat-no" title="statement not covered">    if (immediate) {</span>
       // immediate log
-<span class="cstat-no" title="statement not covered" >      logRequest()</span>
+<span class="cstat-no" title="statement not covered">      logRequest()</span>
     } else {
       // record response start
-<span class="cstat-no" title="statement not covered" >      onHeaders(res, recordStartTime)</span>
+<span class="cstat-no" title="statement not covered">      onHeaders(res, recordStartTime)</span>
 &nbsp;
       // log when response finished
-<span class="cstat-no" title="statement not covered" >      onFinished(res, logRequest)</span>
+<span class="cstat-no" title="statement not covered">      onFinished(res, logRequest)</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    next()</span>
+<span class="cstat-no" title="statement not covered">    next()</span>
   }
 }
 &nbsp;
@@ -1414,79 +1412,79 @@ morgan.format('tiny', ':method :url :status :res[content-length] - :response-tim
  * dev (colored)
  */
 &nbsp;
-morgan.format('dev', <span class="fstat-no" title="function not covered" >function developmentFormatLine (tokens, req, res) {</span>
+morgan.format('dev', <span class="fstat-no" title="function not covered">function developmentFormatLine (tokens, req, res) {</span>
   // get the status code if response written
-<span class="cstat-no" title="statement not covered" >  var status = res._header</span>
+<span class="cstat-no" title="statement not covered">  var status = res._header</span>
     ? res.statusCode
     : undefined
 &nbsp;
   // get status color
-<span class="cstat-no" title="statement not covered" >  var color = status &gt;= 500 ? 31 // red</span>
+<span class="cstat-no" title="statement not covered">  var color = status &gt;= 500 ? 31 // red</span>
     : status &gt;= 400 ? 33 // yellow
     : status &gt;= 300 ? 36 // cyan
     : status &gt;= 200 ? 32 // green
     : 0 // no color
 &nbsp;
   // get colored function
-<span class="cstat-no" title="statement not covered" >  var fn = developmentFormatLine[color]</span>
+<span class="cstat-no" title="statement not covered">  var fn = developmentFormatLine[color]</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (!fn) {</span>
+<span class="cstat-no" title="statement not covered">  if (!fn) {</span>
     // compile
-<span class="cstat-no" title="statement not covered" >    fn = developmentFormatLine[color] = compile('\x1b[0m:method :url \x1b[' +</span>
+<span class="cstat-no" title="statement not covered">    fn = developmentFormatLine[color] = compile('\x1b[0m:method :url \x1b[' +</span>
       color + 'm:status \x1b[0m:response-time ms - :res[content-length]\x1b[0m')
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return fn(tokens, req, res)</span>
+<span class="cstat-no" title="statement not covered">  return fn(tokens, req, res)</span>
 })
 &nbsp;
 /**
  * request url
  */
 &nbsp;
-morgan.token('url', <span class="fstat-no" title="function not covered" >function getUrlToken (req) {</span>
-<span class="cstat-no" title="statement not covered" >  return req.originalUrl || req.url</span>
+morgan.token('url', <span class="fstat-no" title="function not covered">function getUrlToken (req) {</span>
+<span class="cstat-no" title="statement not covered">  return req.originalUrl || req.url</span>
 })
 &nbsp;
 /**
  * request method
  */
 &nbsp;
-morgan.token('method', <span class="fstat-no" title="function not covered" >function getMethodToken (req) {</span>
-<span class="cstat-no" title="statement not covered" >  return req.method</span>
+morgan.token('method', <span class="fstat-no" title="function not covered">function getMethodToken (req) {</span>
+<span class="cstat-no" title="statement not covered">  return req.method</span>
 })
 &nbsp;
 /**
  * response time in milliseconds
  */
 &nbsp;
-morgan.token('response-time', <span class="fstat-no" title="function not covered" >function getResponseTimeToken (req, res, digits) {</span>
-<span class="cstat-no" title="statement not covered" >  if (!req._startAt || !res._startAt) {</span>
+morgan.token('response-time', <span class="fstat-no" title="function not covered">function getResponseTimeToken (req, res, digits) {</span>
+<span class="cstat-no" title="statement not covered">  if (!req._startAt || !res._startAt) {</span>
     // missing request and/or response start time
-<span class="cstat-no" title="statement not covered" >    return</span>
+<span class="cstat-no" title="statement not covered">    return</span>
   }
 &nbsp;
   // calculate diff
-<span class="cstat-no" title="statement not covered" >  var ms = (res._startAt[0] - req._startAt[0]) * 1e3 +</span>
+<span class="cstat-no" title="statement not covered">  var ms = (res._startAt[0] - req._startAt[0]) * 1e3 +</span>
     (res._startAt[1] - req._startAt[1]) * 1e-6
 &nbsp;
   // return truncated value
-<span class="cstat-no" title="statement not covered" >  return ms.toFixed(digits === undefined ? 3 : digits)</span>
+<span class="cstat-no" title="statement not covered">  return ms.toFixed(digits === undefined ? 3 : digits)</span>
 })
 &nbsp;
 /**
  * current date
  */
 &nbsp;
-morgan.token('date', <span class="fstat-no" title="function not covered" >function getDateToken (req, res, format) {</span>
-<span class="cstat-no" title="statement not covered" >  var date = new Date()</span>
+morgan.token('date', <span class="fstat-no" title="function not covered">function getDateToken (req, res, format) {</span>
+<span class="cstat-no" title="statement not covered">  var date = new Date()</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  switch (format || 'web') {</span>
+<span class="cstat-no" title="statement not covered">  switch (format || 'web') {</span>
     case 'clf':
-<span class="cstat-no" title="statement not covered" >      return clfdate(date)</span>
+<span class="cstat-no" title="statement not covered">      return clfdate(date)</span>
     case 'iso':
-<span class="cstat-no" title="statement not covered" >      return date.toISOString()</span>
+<span class="cstat-no" title="statement not covered">      return date.toISOString()</span>
     case 'web':
-<span class="cstat-no" title="statement not covered" >      return date.toUTCString()</span>
+<span class="cstat-no" title="statement not covered">      return date.toUTCString()</span>
   }
 })
 &nbsp;
@@ -1494,8 +1492,8 @@ morgan.token('date', <span class="fstat-no" title="function not covered" >functi
  * response status code
  */
 &nbsp;
-morgan.token('status', <span class="fstat-no" title="function not covered" >function getStatusToken (req, res) {</span>
-<span class="cstat-no" title="statement not covered" >  return res._header</span>
+morgan.token('status', <span class="fstat-no" title="function not covered">function getStatusToken (req, res) {</span>
+<span class="cstat-no" title="statement not covered">  return res._header</span>
     ? String(res.statusCode)
     : undefined
 })
@@ -1504,8 +1502,8 @@ morgan.token('status', <span class="fstat-no" title="function not covered" >func
  * normalized referrer
  */
 &nbsp;
-morgan.token('referrer', <span class="fstat-no" title="function not covered" >function getReferrerToken (req) {</span>
-<span class="cstat-no" title="statement not covered" >  return req.headers['referer'] || req.headers['referrer']</span>
+morgan.token('referrer', <span class="fstat-no" title="function not covered">function getReferrerToken (req) {</span>
+<span class="cstat-no" title="statement not covered">  return req.headers['referer'] || req.headers['referrer']</span>
 })
 &nbsp;
 /**
@@ -1518,12 +1516,12 @@ morgan.token('remote-addr', getip)
  * remote user
  */
 &nbsp;
-morgan.token('remote-user', <span class="fstat-no" title="function not covered" >function getRemoteUserToken (req) {</span>
+morgan.token('remote-user', <span class="fstat-no" title="function not covered">function getRemoteUserToken (req) {</span>
   // parse basic credentials
-<span class="cstat-no" title="statement not covered" >  var credentials = auth(req)</span>
+<span class="cstat-no" title="statement not covered">  var credentials = auth(req)</span>
 &nbsp;
   // return username
-<span class="cstat-no" title="statement not covered" >  return credentials</span>
+<span class="cstat-no" title="statement not covered">  return credentials</span>
     ? credentials.name
     : undefined
 })
@@ -1532,27 +1530,27 @@ morgan.token('remote-user', <span class="fstat-no" title="function not covered" 
  * HTTP version
  */
 &nbsp;
-morgan.token('http-version', <span class="fstat-no" title="function not covered" >function getHttpVersionToken (req) {</span>
-<span class="cstat-no" title="statement not covered" >  return req.httpVersionMajor + '.' + req.httpVersionMinor</span>
+morgan.token('http-version', <span class="fstat-no" title="function not covered">function getHttpVersionToken (req) {</span>
+<span class="cstat-no" title="statement not covered">  return req.httpVersionMajor + '.' + req.httpVersionMinor</span>
 })
 &nbsp;
 /**
  * UA string
  */
 &nbsp;
-morgan.token('user-agent', <span class="fstat-no" title="function not covered" >function getUserAgentToken (req) {</span>
-<span class="cstat-no" title="statement not covered" >  return req.headers['user-agent']</span>
+morgan.token('user-agent', <span class="fstat-no" title="function not covered">function getUserAgentToken (req) {</span>
+<span class="cstat-no" title="statement not covered">  return req.headers['user-agent']</span>
 })
 &nbsp;
 /**
  * request header
  */
 &nbsp;
-morgan.token('req', <span class="fstat-no" title="function not covered" >function getRequestToken (req, res, field) {</span>
+morgan.token('req', <span class="fstat-no" title="function not covered">function getRequestToken (req, res, field) {</span>
   // get header
-<span class="cstat-no" title="statement not covered" >  var header = req.headers[field.toLowerCase()]</span>
+<span class="cstat-no" title="statement not covered">  var header = req.headers[field.toLowerCase()]</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return Array.isArray(header)</span>
+<span class="cstat-no" title="statement not covered">  return Array.isArray(header)</span>
     ? header.join(', ')
     : header
 })
@@ -1561,15 +1559,15 @@ morgan.token('req', <span class="fstat-no" title="function not covered" >functio
  * response header
  */
 &nbsp;
-morgan.token('res', <span class="fstat-no" title="function not covered" >function getResponseHeader (req, res, field) {</span>
-<span class="cstat-no" title="statement not covered" >  if (!res._header) {</span>
-<span class="cstat-no" title="statement not covered" >    return undefined</span>
+morgan.token('res', <span class="fstat-no" title="function not covered">function getResponseHeader (req, res, field) {</span>
+<span class="cstat-no" title="statement not covered">  if (!res._header) {</span>
+<span class="cstat-no" title="statement not covered">    return undefined</span>
   }
 &nbsp;
   // get header
-<span class="cstat-no" title="statement not covered" >  var header = res.getHeader(field)</span>
+<span class="cstat-no" title="statement not covered">  var header = res.getHeader(field)</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return Array.isArray(header)</span>
+<span class="cstat-no" title="statement not covered">  return Array.isArray(header)</span>
     ? header.join(', ')
     : header
 })
@@ -1582,16 +1580,16 @@ morgan.token('res', <span class="fstat-no" title="function not covered" >functio
  * @return {string}
  */
 &nbsp;
-<span class="fstat-no" title="function not covered" >function clfdate (dateTime) {</span>
-<span class="cstat-no" title="statement not covered" >  var date = dateTime.getUTCDate()</span>
-<span class="cstat-no" title="statement not covered" >  var hour = dateTime.getUTCHours()</span>
-<span class="cstat-no" title="statement not covered" >  var mins = dateTime.getUTCMinutes()</span>
-<span class="cstat-no" title="statement not covered" >  var secs = dateTime.getUTCSeconds()</span>
-<span class="cstat-no" title="statement not covered" >  var year = dateTime.getUTCFullYear()</span>
+<span class="fstat-no" title="function not covered">function clfdate (dateTime) {</span>
+<span class="cstat-no" title="statement not covered">  var date = dateTime.getUTCDate()</span>
+<span class="cstat-no" title="statement not covered">  var hour = dateTime.getUTCHours()</span>
+<span class="cstat-no" title="statement not covered">  var mins = dateTime.getUTCMinutes()</span>
+<span class="cstat-no" title="statement not covered">  var secs = dateTime.getUTCSeconds()</span>
+<span class="cstat-no" title="statement not covered">  var year = dateTime.getUTCFullYear()</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  var month = CLF_MONTH[dateTime.getUTCMonth()]</span>
+<span class="cstat-no" title="statement not covered">  var month = CLF_MONTH[dateTime.getUTCMonth()]</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return pad2(date) + '/' + month + '/' + year +</span>
+<span class="cstat-no" title="statement not covered">  return pad2(date) + '/' + month + '/' + year +</span>
     ':' + pad2(hour) + ':' + pad2(mins) + ':' + pad2(secs) +
     ' +0000'
 }
@@ -1604,25 +1602,25 @@ morgan.token('res', <span class="fstat-no" title="function not covered" >functio
  * @public
  */
 &nbsp;
-<span class="fstat-no" title="function not covered" >function compile (format) {</span>
-<span class="cstat-no" title="statement not covered" >  if (typeof format !== 'string') {</span>
-<span class="cstat-no" title="statement not covered" >    throw new TypeError('argument format must be a string')</span>
+<span class="fstat-no" title="function not covered">function compile (format) {</span>
+<span class="cstat-no" title="statement not covered">  if (typeof format !== 'string') {</span>
+<span class="cstat-no" title="statement not covered">    throw new TypeError('argument format must be a string')</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  var fmt = format.replace(/"/g, '\\"')</span>
-<span class="cstat-no" title="statement not covered" >  var js = '  "use strict"\n  return "' + fmt.replace(/:([-\w]{2,})(?:\[([^\]]+)\])?/g, <span class="fstat-no" title="function not covered" >function (_, name, arg) {</span></span>
-<span class="cstat-no" title="statement not covered" >    var tokenArguments = 'req, res'</span>
-<span class="cstat-no" title="statement not covered" >    var tokenFunction = 'tokens[' + String(JSON.stringify(name)) + ']'</span>
+<span class="cstat-no" title="statement not covered">  var fmt = format.replace(/"/g, '\\"')</span>
+<span class="cstat-no" title="statement not covered">  var js = '  "use strict"\n  return "' + fmt.replace(/:([-\w]{2,})(?:\[([^\]]+)\])?/g, <span class="fstat-no" title="function not covered">function (_, name, arg) {</span></span>
+<span class="cstat-no" title="statement not covered">    var tokenArguments = 'req, res'</span>
+<span class="cstat-no" title="statement not covered">    var tokenFunction = 'tokens[' + String(JSON.stringify(name)) + ']'</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (arg !== undefined) {</span>
-<span class="cstat-no" title="statement not covered" >      tokenArguments += ', ' + String(JSON.stringify(arg))</span>
+<span class="cstat-no" title="statement not covered">    if (arg !== undefined) {</span>
+<span class="cstat-no" title="statement not covered">      tokenArguments += ', ' + String(JSON.stringify(arg))</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return '" +\n    (' + tokenFunction + '(' + tokenArguments + ') || "-") + "'</span>
+<span class="cstat-no" title="statement not covered">    return '" +\n    (' + tokenFunction + '(' + tokenArguments + ') || "-") + "'</span>
   }) + '"'
 &nbsp;
   // eslint-disable-next-line no-new-func
-<span class="cstat-no" title="statement not covered" >  return new Function('tokens, req, res', js)</span>
+<span class="cstat-no" title="statement not covered">  return new Function('tokens, req, res', js)</span>
 }
 &nbsp;
 /**
@@ -1633,28 +1631,28 @@ morgan.token('res', <span class="fstat-no" title="function not covered" >functio
  * @public
  */
 &nbsp;
-<span class="fstat-no" title="function not covered" >function createBufferStream (stream, interval) {</span>
-<span class="cstat-no" title="statement not covered" >  var buf = []</span>
-<span class="cstat-no" title="statement not covered" >  var timer = null</span>
+<span class="fstat-no" title="function not covered">function createBufferStream (stream, interval) {</span>
+<span class="cstat-no" title="statement not covered">  var buf = []</span>
+<span class="cstat-no" title="statement not covered">  var timer = null</span>
 &nbsp;
   // flush function
-<span class="fstat-no" title="function not covered" >  function flush () {</span>
-<span class="cstat-no" title="statement not covered" >    timer = null</span>
-<span class="cstat-no" title="statement not covered" >    stream.write(buf.join(''))</span>
-<span class="cstat-no" title="statement not covered" >    buf.length = 0</span>
+<span class="fstat-no" title="function not covered">  function flush () {</span>
+<span class="cstat-no" title="statement not covered">    timer = null</span>
+<span class="cstat-no" title="statement not covered">    stream.write(buf.join(''))</span>
+<span class="cstat-no" title="statement not covered">    buf.length = 0</span>
   }
 &nbsp;
   // write function
-<span class="fstat-no" title="function not covered" >  function write (str) {</span>
-<span class="cstat-no" title="statement not covered" >    if (timer === null) {</span>
-<span class="cstat-no" title="statement not covered" >      timer = setTimeout(flush, interval)</span>
+<span class="fstat-no" title="function not covered">  function write (str) {</span>
+<span class="cstat-no" title="statement not covered">    if (timer === null) {</span>
+<span class="cstat-no" title="statement not covered">      timer = setTimeout(flush, interval)</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    buf.push(str)</span>
+<span class="cstat-no" title="statement not covered">    buf.push(str)</span>
   }
 &nbsp;
   // return a minimal "stream"
-<span class="cstat-no" title="statement not covered" >  return { write: write }</span>
+<span class="cstat-no" title="statement not covered">  return { write: write }</span>
 }
 &nbsp;
 /**
@@ -1678,12 +1676,12 @@ function format (name, fmt) {
  * @public
  */
 &nbsp;
-<span class="fstat-no" title="function not covered" >function getFormatFunction (name) {</span>
+<span class="fstat-no" title="function not covered">function getFormatFunction (name) {</span>
   // lookup format
-<span class="cstat-no" title="statement not covered" >  var fmt = morgan[name] || name || morgan.default</span>
+<span class="cstat-no" title="statement not covered">  var fmt = morgan[name] || name || morgan.default</span>
 &nbsp;
   // return compiled format
-<span class="cstat-no" title="statement not covered" >  return typeof fmt !== 'function'</span>
+<span class="cstat-no" title="statement not covered">  return typeof fmt !== 'function'</span>
     ? compile(fmt)
     : fmt
 }
@@ -1696,8 +1694,8 @@ function format (name, fmt) {
  * @return {string}
  */
 &nbsp;
-<span class="fstat-no" title="function not covered" >function getip (req) {</span>
-<span class="cstat-no" title="statement not covered" >  return req.ip ||</span>
+<span class="fstat-no" title="function not covered">function getip (req) {</span>
+<span class="cstat-no" title="statement not covered">  return req.ip ||</span>
     req._remoteAddress ||
     (req.connection &amp;&amp; req.connection.remoteAddress) ||
     undefined
@@ -1711,10 +1709,10 @@ function format (name, fmt) {
  * @return {string}
  */
 &nbsp;
-<span class="fstat-no" title="function not covered" >function pad2 (num) {</span>
-<span class="cstat-no" title="statement not covered" >  var str = String(num)</span>
+<span class="fstat-no" title="function not covered">function pad2 (num) {</span>
+<span class="cstat-no" title="statement not covered">  var str = String(num)</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (str.length === 1 ? '0' : '') + str</span>
+<span class="cstat-no" title="statement not covered">  return (str.length === 1 ? '0' : '') + str</span>
 }
 &nbsp;
 /**
@@ -1722,9 +1720,9 @@ function format (name, fmt) {
  * @private
  */
 &nbsp;
-<span class="fstat-no" title="function not covered" >function recordStartTime () {</span>
-<span class="cstat-no" title="statement not covered" >  this._startAt = process.hrtime()</span>
-<span class="cstat-no" title="statement not covered" >  this._startTime = new Date()</span>
+<span class="fstat-no" title="function not covered">function recordStartTime () {</span>
+<span class="cstat-no" title="statement not covered">  this._startAt = process.hrtime()</span>
+<span class="cstat-no" title="statement not covered">  this._startTime = new Date()</span>
 }
 &nbsp;
 /**
@@ -1742,10 +1740,11 @@ function token (name, fn) {
 }
 &nbsp;
 &nbsp;</pre></td></tr>
-</table></pre>
+</tbody></table></pre>
 </div>
 <div class="footer">
     <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Sat Apr 15 2017 21:30:59 GMT+0000 (UTC)</div>
 </div>
-</body>
-</html>
+
+
+</body></html>
